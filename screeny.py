@@ -17,7 +17,7 @@ class Screeny(object):
 		self.args = args
 	
 	def upload_to_imgur(self):
-		CLIENT_ID = ""
+		CLIENT_ID = "5c6af8a99249f98"
 
 		ImageGrab.grab_to_file(args.upload)
 		im = pyimgur.Imgur(CLIENT_ID)
