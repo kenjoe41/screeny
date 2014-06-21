@@ -7,6 +7,7 @@
 import argparse
 import os
 import pyimgur
+import pyperclip
 import time
 
 import pyscreenshot as ImageGrab
@@ -29,10 +30,15 @@ class Screeny(object):
 		except OSError, e:
 			print ("Error: %s - %s." % (e.filename,e.strerror))
 
+		if args.copy:
+			pyperclip.copy(uploaded_image.link)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog="Screeny")
-    parser.add_argument('-u', '--upload', help="upload the screenshot to imgur")
+    parser.add_argument('-u', '--upload', help="upload the screenshot to imgur", required=True)
     parser.add_argument('-t', '--timer', help="Sets a timer on the screenshot.", type=int, required=False)
+    parser.add_argument('-c', '--copy', help="copies the URL to the clipboard.", action='store_true', required=False)
 
     args = parser.parse_args()
 
